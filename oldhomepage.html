@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testmaker</title>
+    <link rel="stylesheet" href="homepagestyle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Testmaker</h1>
+            <div class="name">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+        </header>
+
+        <form class="form">
+            <div class="form-group">
+                <label for="title">Test Title</label>
+                <input type="text" id="title" placeholder="Enter test title">
+            </div>
+            <div class="form-group">
+                <label for="course_code">Course Code</label>
+                <div class="dropdown">
+                    <input type="text" id="course_code" placeholder="Enter or select course code" oninput="filterOptions()" onclick="showDropdown()">
+                    <div id="course_code_dropdown" class="dropdown-content"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="unit">Unit</label>
+                <select id="unit" name="unit">
+                    <option value="">Select a unit</option>
+                </select>
+            </div>
+            <div class="form-group question-types">
+                <div>
+                    <label for="knowledge_questions">Knowledge Questions</label>
+                    <input type="number" id="knowledge_questions" min="0" value="0">
+                </div>
+                <div>
+                    <label for="application_questions">Application Questions</label>
+                    <input type="number" id="application_questions" min="0" value="0">
+                </div>
+                <div>
+                    <label for="communication_questions">Communication Questions</label>
+                    <input type="number" id="communication_questions" min="0" value="0">
+                </div>
+                <div>
+                    <label for="thinking_questions">Thinking Questions</label>
+                    <input type="number" id="thinking_questions" min="0" value="0">
+                </div>
+            </div>
+            <button type="button" onclick="getInput()">Generate Test</button>
+        </form>
+
+        <div id="question-container"></div>
+
+        <div class="action-buttons">
+            <button id="addTextBox" onclick="addQuestion()">Add Question</button>
+            <button id="finishButton" onclick="addFinishButton()">Finish Test</button>
+        </div>
+
+        <div id="latexModal" class="modal">
+            <div class="modal-content">
+                <span class="close">×</span>
+                <div id="latexIconsContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="homepagescript.js"></script>
+</body>
+</html>
